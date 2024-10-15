@@ -1,0 +1,54 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import { cva, type VariantProps } from 'class-variance-authority'
+import { cn } from '@/utils/class';
+
+const buttonVariants = cva('rounded-md', {
+  variants: {
+    intent: {
+      default: [
+        'bg-transparent',
+        'border-[1px]',
+        'border-white',
+      ],
+      'gradient-purple': [
+        'bg-gradient-to-r',
+        'from-pink-100',
+        'to-purple-500',
+      ],
+    },
+    size: {
+      default: ['text-base', 'px-4', 'py-2', 'text-white'],
+      small: ['text-sm', 'px-4', 'py-2', 'text-white'],
+    },
+  },
+  defaultVariants: {
+    intent: 'default',
+    size: 'default',
+  }
+});
+
+export interface Props extends HTMLAttributes<'button'>, VariantProps<typeof buttonVariants> {
+  isLink?: boolean;
+  href?: string;
+}
+
+const { intent, size, isLink = false, href = '#', ...props } = Astro.props;
+---
+
+{isLink ? (
+  <a
+    href={href}
+    class={cn(buttonVariants({ intent, size }))}
+    {...props}
+  >
+    <slot />
+  </a>
+) : (
+  <button
+    class={cn(buttonVariants({ intent, size }))}
+    {...props}
+  >
+    <slot />
+  </button>
+)}
