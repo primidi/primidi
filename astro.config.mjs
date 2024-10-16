@@ -5,6 +5,5 @@ import tailwind from '@astrojs/tailwind';
 export default defineConfig({
   integrations: [tailwind()],
   site: 'https://primidi.github.io',
-  base: 'primidi.github.io',
   output: 'static',
 });
