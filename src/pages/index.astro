@@ -1,4 +1,5 @@
 ---
+import BetaLabel from '@/components/mollecules/BetaLabel.astro';
 import Contact from '@/components/mollecules/Contact.astro';
 import Experiences from '@/components/mollecules/Experiences.astro';
 import Hero from '@/components/mollecules/Hero.astro';
@@ -19,8 +20,9 @@ import Hero from '@/components/mollecules/Hero.astro';
 		<img
 			src="/circle-blur.svg"
 			alt="circle-blur-left"
-			class="absolute top-0 left-10 z-0"
+			class="hidden lg:block absolute top-0 left-10 z-0"
 		/>
+		<BetaLabel class="sticky top-0 z-20" />
 		<div class="flex justify-center items-center h-dvh mx-4 my-8 relative">
 			<div class="w-96 flex flex-col gap-y-8 z-10">
 				<Hero />
