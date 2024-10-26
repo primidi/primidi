@@ -27,7 +27,7 @@ export default {
         },
       },
       fontFamily: {
-        sans: ['Poppins', 'sans-serif', 'system-ui'],
+        sans: ['Poppins', 'system-ui'],
         serif: ['Merriweather', 'serif'],
       },
     },
