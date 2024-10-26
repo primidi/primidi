@@ -3,79 +3,63 @@ import SocmedLink from '../atoms/SocmedLink.astro';
 ---
 
 <div class="flex flex-col gap-y-6">
-  <div class="flex justify-between gap-x-4">
-    <img
-      src="/profile-header.png"
-      alt="Primidi | Gharis P. Hariyono"
-      class="w-24"
-    />
-    <div class="flex flex-col gap-y-2 self-center">
-      <h3 class="text-2xl text-white font-bold">
-        Gharis P. Hariyono
-      </h3>
-      <p class="text-base text-white">
-        Software Engineer - Frontend
-      </p>
-    </div>
-  </div>
-  <p class="text-base text-justify text-white">
-    Hi, I'm Gharis Primada Hariyono <span class="font-bold">a Nomad Software Engineer (Frontend) 🧑‍💻</span> who playful with music, coffee-holic-ism, and aspire to read bunch of books 🎸☕📚.
-  </p>
-  <div class="flex justify-evenly">
-    <SocmedLink
-      href="https://github.com/primidi"
-      target="_blank"
-      title="My GitHub Profile"
-      intent="github"
-    >
-      <img
-        src="./github.svg"
-        alt="Github"
-      />
-    </SocmedLink>
-    <SocmedLink
-      href="https://www.instagram.com/primidi/profilecard/?igsh=NmNyY2ttbDMwemh4"
-      target="_blank"
-      title="My Instagram Profile"
-      intent="instagram"
-    >
-      <img
-        src="./instagram.svg"
-        alt="Instagram"
-      />
-    </SocmedLink>
-    <SocmedLink
-      href="https://x.com/primadahzz"
-      target="_blank"
-      title="My X Profile"
-      intent="x"
-    >
-      <img
-        src="./x.svg"
-        alt="X"
-      />
-    </SocmedLink>
-    <SocmedLink
-      href="https://www.linkedin.com/in/gphariyono"
-      target="_blank"
-      title="My LinkedIn Profile"
-      intent="linkedin"
-    >
-      <img
-        src="./linkedin.svg"
-        alt="Linkedin"
-      />
-    </SocmedLink>
-    <SocmedLink
-      href="https://open.spotify.com/user/57kuf14buz21cs70qi7er7oxr?si=SYDTX_1PRQqXqJm3wqDEHg"
-      target="_blank"
-      title="My Spotify Profile"
-      intent="spotify"
-    >
-      <img
-        src="./spotify.svg"
-        alt="Spotify"
-      />
-    </SocmedLink>
-  </div>
+	<div class="flex justify-between gap-x-4">
+		<img
+			src="/profile-header.png"
+			alt="Primidi | Gharis P. Hariyono"
+			class="w-24"
+		/>
+		<div class="flex flex-col gap-y-2 self-center">
+			<h3 class="text-2xl font-bold text-white">Gharis P. Hariyono</h3>
+			<p class="text-base text-white">Software Engineer - Frontend</p>
+		</div>
+	</div>
+	<p class="text-justify text-base text-white">
+		Hi, I'm Gharis Primada Hariyono <span class="font-bold"
+			>a Nomad Software Engineer (Frontend) 🧑‍💻</span
+		> who playful with music, coffee-holic-ism, and aspire to read bunch of books
+		🎸☕📚.
+	</p>
+	<div class="flex justify-evenly">
+		<SocmedLink
+			href="https://github.com/primidi"
+			target="_blank"
+			title="My GitHub Profile"
+			intent="github"
+		>
+			<img src="./github.svg" alt="Github" />
+		</SocmedLink>
+		<SocmedLink
+			href="https://www.instagram.com/primidi/profilecard/?igsh=NmNyY2ttbDMwemh4"
+			target="_blank"
+			title="My Instagram Profile"
+			intent="instagram"
+		>
+			<img src="./instagram.svg" alt="Instagram" />
+		</SocmedLink>
+		<SocmedLink
+			href="https://x.com/primadahzz"
+			target="_blank"
+			title="My X Profile"
+			intent="x"
+		>
+			<img src="./x.svg" alt="X" />
+		</SocmedLink>
+		<SocmedLink
+			href="https://www.linkedin.com/in/gphariyono"
+			target="_blank"
+			title="My LinkedIn Profile"
+			intent="linkedin"
+		>
+			<img src="./linkedin.svg" alt="Linkedin" />
+		</SocmedLink>
+		<SocmedLink
+			href="https://open.spotify.com/user/57kuf14buz21cs70qi7er7oxr?si=SYDTX_1PRQqXqJm3wqDEHg"
+			target="_blank"
+			title="My Spotify Profile"
+			intent="spotify"
+		>
+			<img src="./spotify.svg" alt="Spotify" />
+		</SocmedLink>
+	</div>
 </div>
