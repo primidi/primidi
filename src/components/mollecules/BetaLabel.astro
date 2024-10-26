@@ -1,6 +1,6 @@
 ---
 import { cn } from '@/utils/class';
-import type { HTMLAttributes } from 'astro/types'
+import type { HTMLAttributes } from 'astro/types';
 
 interface Props extends HTMLAttributes<'div'> {}
 
@@ -8,10 +8,20 @@ const { ...props } = Astro.props;
 ---
 
 <div
-  class={cn('w-full py-2 px-4 text-center bg-gradient-to-r from-pink-100 to-purple-300', props.class)}
-  {...props}
+	class={cn(
+		'w-full py-2 px-4 text-center bg-gradient-to-r from-pink-100 to-purple-300',
+		props.class,
+	)}
+	{...props}
 >
-  <p class="text-xs md:text-sm text-white font-semibold">
-    This is a <span class="font-extrabold">Pre-Release</span> Version of Primidi Website! If you have any concern please propose an issue <a href="https://github.com/primidi/primidi.github.io/issues" target="_blank" title="Open a Github's Issue" class="font-extrabold underline duration-200 hover:text-purple-700 hover:no-underline">here</a>. 🧑‍🚀🚀
-  </p>
+	<p class="text-xs font-semibold text-white md:text-sm">
+		This is a <span class="font-extrabold">Pre-Release</span> Version of Primidi
+		Website! If you have any concern please propose an issue <a
+			href="https://github.com/primidi/primidi.github.io/issues"
+			target="_blank"
+			title="Open a Github's Issue"
+			class="font-extrabold underline duration-200 hover:text-purple-700 hover:no-underline"
+			>here</a
+		>. 🧑‍🚀🚀
+	</p>
 </div>
