@@ -1,0 +1,21 @@
+---
+import Header from '@/components/Header.astro';
+import BetaLabel from '@/components/BetaLabel.astro';
+
+type Props = { title: string; isPreRelease?: boolean };
+const { title, isPreRelease = true } = Astro.props;
+---
+
+<html lang="en">
+  <Header title={title} />
+  <body>
+    {isPreRelease && <BetaLabel class="sticky top-0 z-20" />}
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  html {
+    @apply text-white;
+  }
+</style>

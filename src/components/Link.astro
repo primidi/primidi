@@ -1,0 +1,11 @@
+---
+import { cn } from '@/utils/class';
+import type { HTMLAttributes } from 'astro/types';
+
+type Props = HTMLAttributes<'a'>;
+const { href, ...props } = Astro.props;
+---
+
+<a href={href} class={cn('text-white', props.class)} {...props}>
+  <slot />
+</a>

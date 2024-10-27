@@ -1,0 +1,31 @@
+---
+import { formatDate } from '@/utils/date';
+import type { CollectionEntry } from 'astro:content';
+import Badge from './atoms/Badge.astro';
+
+type Props = CollectionEntry<'post'>['data'] & {
+  minutesRead: string;
+};
+const { title, publicationDate, tags, minutesRead } = Astro.props;
+---
+
+<article class="prose flex flex-col justify-center gap-y-4">
+  <h1 class="text-center text-3xl font-bold">{title}</h1>
+  <div class="flex items-center justify-center gap-x-2">
+    <p class="text-sm text-white">
+      {formatDate(publicationDate)}
+    </p>
+    <p class="text-sm text-white">&#8226;</p>
+    <p class="text-sm text-white">{minutesRead}</p>
+    <p class="text-sm text-white">&#8226;</p>
+    <div class="flex gap-x-2">
+      {tags.map((tag) => <Badge>{tag}</Badge>)}
+    </div>
+  </div>
+  <slot />
+  <footer class="p-4">
+    <p class="text-center text-sm text-white">
+      2024 &#8226; Primidi. All were made with 💖.
+    </p>
+  </footer>
+</article>
