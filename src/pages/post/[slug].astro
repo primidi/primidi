@@ -1,0 +1,31 @@
+---
+import Markdown from '@/components/Markdown.astro';
+import PostLayout from '@/layouts/PostLayout.astro';
+import { getEntry } from 'astro:content';
+
+const { slug } = Astro.params;
+
+const post = await getEntry('post', slug);
+const {
+  Content,
+  remarkPluginFrontmatter: { minutesRead },
+} = await post.render();
+---
+
+<PostLayout>
+  <Markdown
+    title={post.data.title}
+    publicationDate={post.data.publicationDate}
+    tags={post.data.tags}
+    minutesRead={minutesRead}
+  >
+    <div class="flex justify-center">
+      <img
+        src={post.data.hero?.image.src}
+        alt={post.data.hero?.alt}
+        width={post.data.hero?.image.width}
+      />
+    </div>
+    <Content />
+  </Markdown>
+</PostLayout>

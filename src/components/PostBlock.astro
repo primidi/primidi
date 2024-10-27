@@ -1,0 +1,40 @@
+---
+import { formatDate } from '@/utils/date';
+import Grid from './atoms/Grid.astro';
+import Link from './Link.astro';
+import type { CollectionEntry } from 'astro:content';
+import Badge from './atoms/Badge.astro';
+
+type Props = {
+  post: CollectionEntry<'post'>;
+  image?: string;
+};
+
+const { post } = Astro.props;
+
+const {
+  remarkPluginFrontmatter: { minutesRead },
+} = await post.render();
+---
+
+<Grid>
+  <Link
+    href={`post/${post.slug}`}
+    class="text-xl font-bold text-white"
+    title={post.data.title}
+  >
+    {post.data.title}
+  </Link>
+  <div class="flex items-center gap-x-2">
+    <p class="text-sm text-white">
+      {formatDate(post.data.publicationDate)}
+    </p>
+    <p class="text-sm text-white">&#8226;</p>
+    <p class="text-sm text-white">{minutesRead}</p>
+    <p class="text-sm text-white">&#8226;</p>
+    {post.data.tags.map((tag) => <Badge>{tag}</Badge>)}
+  </div>
+  <h6 class="text-base text-white">
+    {post.data.description}
+  </h6>
+</Grid>

@@ -1,32 +1,30 @@
 ---
 import { cn } from '@/utils/class';
 import type { HTMLAttributes } from 'astro/types';
-import { cva, type VariantProps } from 'class-variance-authority'
+import { cva, type VariantProps } from 'class-variance-authority';
 
-const badgeVariants = cva('rounded-full px-2.5 py-1.5 text-sm text-white', {
+const badgeVariants = cva('rounded-full px-3 py-0.5 text-sm text-white', {
   variants: {
     intent: {
       'gradient-purple': [
         'bg-gradient-to-r',
-        'from-pink-100',
-        'to-purple-500',
+        'from-purple-300',
+        'to-purple-100',
       ],
     },
   },
   defaultVariants: {
     intent: 'gradient-purple',
-  }
+  },
 });
 
-export interface Props extends HTMLAttributes<'span'>, VariantProps<typeof badgeVariants> {}
+export interface Props
+  extends HTMLAttributes<'span'>,
+    VariantProps<typeof badgeVariants> {}
 
 const { intent, ...props } = Astro.props;
 ---
 
-<span
-  class={cn(badgeVariants({ intent }))}
-  {...props}
->
+<span class={cn(badgeVariants({ intent }))} {...props}>
   <slot />
 </span>
-

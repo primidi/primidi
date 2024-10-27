@@ -1,0 +1,26 @@
+---
+import { getCollection } from 'astro:content';
+import Link from './Link.astro';
+import PostBlock from './PostBlock.astro';
+
+const posts = await getCollection('post', (post) => !post.data.draft);
+const latestPost = posts.sort((a, b) => {
+  return (
+    new Date(b.data.publicationDate).valueOf() -
+    new Date(a.data.publicationDate).valueOf()
+  );
+})[0];
+---
+
+<div class="flex flex-col gap-y-4">
+  <h4 class="text-xl font-bold text-white">My Latest Writing</h4>
+  <PostBlock post={latestPost} />
+  <Link
+    class="flex w-full justify-center gap-x-2 text-sm font-semibold"
+    href="/post"
+    title="View All Writings"
+  >
+    See All Writings
+    <img src="/arrow.svg" />
+  </Link>
+</div>

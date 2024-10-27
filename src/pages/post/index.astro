@@ -1,0 +1,16 @@
+---
+import PostBlock from '@/components/PostBlock.astro';
+import PostLayout from '@/layouts/PostLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('post', (post) => !post.data.draft);
+---
+
+<PostLayout>
+  <div class="flex flex-col gap-y-6">
+    <h1 class="text-3xl font-bold text-white">My Writings</h1>
+    <div class="flex flex-col gap-y-4">
+      {posts.map((post) => <PostBlock post={post} />)}
+    </div>
+  </div>
+</PostLayout>
