@@ -2,6 +2,7 @@
 import Header from '@/components/Header.astro';
 import BetaLabel from '@/components/BetaLabel.astro';
 
+export const prerender = false;
 type Props = { title: string; isPreRelease?: boolean };
 const { title, isPreRelease = true } = Astro.props;
 ---
