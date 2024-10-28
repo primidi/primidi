@@ -9,7 +9,7 @@ type Props = CollectionEntry<'post'>['data'] & {
 const { title, publicationDate, tags, minutesRead } = Astro.props;
 ---
 
-<article class="prose flex flex-col justify-center gap-y-4">
+<article class="prose flex flex-col gap-y-4">
   <h1 class="text-center text-3xl font-bold">{title}</h1>
   <div class="flex items-center justify-center gap-x-2">
     <p class="text-sm text-white">

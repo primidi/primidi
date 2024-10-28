@@ -31,7 +31,8 @@ const {
     </p>
     <p class="text-sm text-white">&#8226;</p>
     <p class="text-sm text-white">{minutesRead}</p>
-    <p class="text-sm text-white">&#8226;</p>
+  </div>
+  <div class="flex gap-x-2">
     {post.data.tags.map((tag) => <Badge>{tag}</Badge>)}
   </div>
   <h6 class="text-base text-white">
