@@ -8,6 +8,7 @@ const post = defineCollection({
       description: z.string(),
       publicationDate: z.date(),
       tags: z.array(z.string()),
+      keywords: z.array(z.string()).optional(),
       draft: z.boolean().optional(),
       hero: z
         .object({

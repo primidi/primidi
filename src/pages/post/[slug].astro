@@ -12,7 +12,11 @@ const {
 } = await post.render();
 ---
 
-<PostLayout title={post.data.title} description={post.data.description}>
+<PostLayout
+  metaTitle={post.data.title}
+  metaDescription={post.data.description}
+  metaKeywords={post.data.keywords}
+>
   <Markdown
     title={post.data.title}
     publicationDate={post.data.publicationDate}
