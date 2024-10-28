@@ -3,14 +3,15 @@ import Link from '@/components/Link.astro';
 import BaseLayout from './BaseLayout.astro';
 
 type Props = {
-  title: string;
-  description: string;
+  metaTitle: string;
+  metaDescription: string;
+  metaKeywords?: string[];
 };
 
-const { title = 'Primidi | Posts', description = '' } = Astro.props;
+const { metaTitle = 'Primidi | Posts', metaDescription = '' } = Astro.props;
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout metaTitle={metaTitle} metaDescription={metaDescription}>
   <div class="mx-6 my-8 flex flex-col gap-y-6 md:mx-16 lg:mx-72">
     <Link href="/" class="flex gap-x-2 font-semibold">
       <img src="/arrow.svg" class="rotate-180" alt="arrow-left" />

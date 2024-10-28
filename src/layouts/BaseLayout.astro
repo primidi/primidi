@@ -4,15 +4,27 @@ import BetaLabel from '@/components/BetaLabel.astro';
 
 export const prerender = false;
 type Props = {
-  title: string;
-  description: string;
+  metaTitle: string;
+  metaDescription: string;
+  metaKeywords?: string[];
   isPreRelease?: boolean;
 };
-const { title, description, isPreRelease = true } = Astro.props;
+const {
+  metaTitle,
+  metaDescription,
+  metaKeywords = [],
+  isPreRelease = true,
+} = Astro.props;
+
+const metaKeywordsString = metaKeywords?.join(', ') || '';
 ---
 
 <html lang="en">
-  <Header title={title} description={description} />
+  <Header
+    metaTitle={metaTitle}
+    metaDescription={metaDescription}
+    metaKeywords={metaKeywordsString}
+  />
   <body>
     {isPreRelease && <BetaLabel class="sticky top-0 z-20" />}
     <slot />
