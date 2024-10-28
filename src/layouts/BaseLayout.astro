@@ -3,12 +3,16 @@ import Header from '@/components/Header.astro';
 import BetaLabel from '@/components/BetaLabel.astro';
 
 export const prerender = false;
-type Props = { title: string; isPreRelease?: boolean };
-const { title, isPreRelease = true } = Astro.props;
+type Props = {
+  title: string;
+  description: string;
+  isPreRelease?: boolean;
+};
+const { title, description, isPreRelease = true } = Astro.props;
 ---
 
 <html lang="en">
-  <Header title={title} />
+  <Header title={title} description={description} />
   <body>
     {isPreRelease && <BetaLabel class="sticky top-0 z-20" />}
     <slot />
