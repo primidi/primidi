@@ -1,0 +1,58 @@
+---
+interface BreadcrumbItem {
+  name: string;
+  href: string;
+}
+
+interface Props {
+  items: BreadcrumbItem[];
+  class?: string;
+}
+
+const { items, class: className = '' } = Astro.props;
+
+// Generate JSON-LD for breadcrumbs
+const breadcrumbStructuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: items.map((item, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: item.name,
+    item: item.href.startsWith('http') ? item.href : `https://primidi.vercel.app${item.href}`,
+  })),
+};
+---
+
+<nav aria-label="Breadcrumb" class={`flex items-center space-x-2 text-sm ${className}`}>
+  {items.map((item, index) => (
+    <div class="flex items-center">
+      {index > 0 && (
+        <svg 
+          class="h-4 w-4 text-gray-400 mx-2" 
+          fill="currentColor" 
+          viewBox="0 0 20 20"
+          aria-hidden="true"
+        >
+          <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+        </svg>
+      )}
+      
+      {index === items.length - 1 ? (
+        <span class="text-gray-300 font-medium" aria-current="page">
+          {item.name}
+        </span>
+      ) : (
+        <a 
+          href={item.href} 
+          class="text-gray-400 hover:text-white transition-colors font-medium"
+        >
+          {item.name}
+        </a>
+      )}
+    </div>
+  ))}
+</nav>
+
+<!-- JSON-LD for breadcrumb structured data -->
+<script type="application/ld+json" set:html={JSON.stringify(breadcrumbStructuredData)} />

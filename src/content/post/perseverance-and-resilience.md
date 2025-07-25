@@ -2,7 +2,7 @@
 title: The Importance of Being Perseverance and Resilience Software Engineer
 description: Perseverance and resilience are underrated skills that Software Engineers should have.
 publicationDate: 2024-10-27
-tags: [Untechnical]
+tags: [Nontechnical]
 keywords: ['perseverance', 'resilience', 'software engineer']
 draft: false
 hero:

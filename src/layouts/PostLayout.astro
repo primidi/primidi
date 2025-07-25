@@ -1,17 +1,36 @@
 ---
 import Link from '@/components/Link.astro';
 import BaseLayout from './BaseLayout.astro';
+import type { SEOProps } from '@/components/SEO.astro';
 
-type Props = {
-  metaTitle: string;
-  metaDescription: string;
-  metaKeywords?: string[];
+type Props = SEOProps & {
+  publishedTime?: Date;
+  modifiedTime?: Date;
+  tags?: string[];
+  author?: string;
 };
 
-const { metaTitle = 'Primidi | Posts', metaDescription = '' } = Astro.props;
+const { 
+  title = 'Primidi | Posts', 
+  description = '',
+  publishedTime,
+  modifiedTime,
+  tags = [],
+  author = 'Gharis Primada Hariyono',
+  ...otherProps 
+} = Astro.props;
 ---
 
-<BaseLayout metaTitle={metaTitle} metaDescription={metaDescription}>
+<BaseLayout 
+  title={title} 
+  description={description}
+  type="article"
+  publishedTime={publishedTime}
+  modifiedTime={modifiedTime}
+  tags={tags}
+  author={author}
+  {...otherProps}
+>
   <div class="mx-6 my-8 flex flex-col gap-y-6 md:mx-16 lg:mx-72">
     <Link href="/" class="flex gap-x-2 font-semibold">
       <img src="/arrow.svg" class="rotate-180" alt="arrow-left" />

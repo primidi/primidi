@@ -6,16 +6,42 @@ import { getEntry } from 'astro:content';
 const { slug } = Astro.params;
 
 const post = await getEntry('post', slug);
+if (!post) {
+  return Astro.redirect('/404');
+}
+
 const {
   Content,
   remarkPluginFrontmatter: { minutesRead },
 } = await post.render();
+
+// Generate SEO-optimized title and description
+const seoTitle = `${post.data.title} | Primidi Blog`;
+const seoDescription = post.data.description.length > 160 
+  ? post.data.description.substring(0, 157) + '...'
+  : post.data.description;
+
+// Generate article URL
+const articleUrl = `https://primidi.vercel.app/post/${slug}`;
+
+// Use hero image or fallback
+const heroImage = post.data.hero?.image.src || '/profile-header.png';
+const imageUrl = heroImage.startsWith('http') 
+  ? heroImage 
+  : `https://primidi.vercel.app${heroImage}`;
 ---
 
 <PostLayout
-  metaTitle={post.data.title}
-  metaDescription={post.data.description}
-  metaKeywords={post.data.keywords}
+  title={seoTitle}
+  description={seoDescription}
+  keywords={post.data.keywords || post.data.tags}
+  url={articleUrl}
+  image={imageUrl}
+  imageAlt={post.data.hero?.alt || post.data.title}
+  publishedTime={post.data.publicationDate}
+  modifiedTime={post.data.publicationDate}
+  tags={post.data.tags}
+  author="Gharis Primada Hariyono"
 >
   <Markdown
     title={post.data.title}
@@ -23,13 +49,17 @@ const {
     tags={post.data.tags}
     minutesRead={minutesRead}
   >
-    <div class="flex justify-center">
-      <img
-        src={post.data.hero?.image.src}
-        alt={post.data.hero?.alt}
-        width={post.data.hero?.image.width}
-      />
-    </div>
+    {post.data.hero && (
+      <div class="flex justify-center">
+        <img
+          src={post.data.hero.image.src}
+          alt={post.data.hero.alt}
+          width={post.data.hero.image.width}
+          loading="eager"
+          decoding="async"
+        />
+      </div>
+    )}
     <Content />
   </Markdown>
 </PostLayout>

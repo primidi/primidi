@@ -1,10 +1,29 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import Link from '@/components/Link.astro';
 ---
 
-<BaseLayout title="404" isPreRelease={false}>
-  <div class="flex h-dvh flex-col items-center justify-center gap-y-2">
-    <h1 class="text-2xl font-bold text-white">404 | Page Not Found</h1>
-    <p class="text-lg font-medium text-white">Oops, it seems you're lost.</p>
+<BaseLayout 
+  title="404 - Page Not Found | Primidi"
+  description="Sorry, the page you're looking for doesn't exist. Return to Primidi's homepage to explore programming tutorials, tech insights, and software engineering content."
+  noindex={true}
+  nofollow={true}
+  isPreRelease={false}
+>
+  <div class="flex h-dvh flex-col items-center justify-center gap-y-6">
+    <div class="text-center">
+      <h1 class="text-6xl font-bold text-white mb-4">404</h1>
+      <h2 class="text-2xl font-bold text-white mb-2">Page Not Found</h2>
+      <p class="text-lg font-medium text-gray-300 mb-6">Oops, it seems you're lost. The page you're looking for doesn't exist.</p>
+    </div>
+    
+    <div class="flex flex-col sm:flex-row gap-4">
+      <Link href="/" class="px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-lg transition-colors">
+        Go Home
+      </Link>
+      <Link href="/post" class="px-6 py-3 border border-purple-600 hover:bg-purple-600 text-white font-semibold rounded-lg transition-colors">
+        Browse Posts
+      </Link>
+    </div>
   </div>
 </BaseLayout>

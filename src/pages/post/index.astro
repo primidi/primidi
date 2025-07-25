@@ -6,7 +6,24 @@ import { getCollection } from 'astro:content';
 const posts = await getCollection('post', (post) => !post.data.draft);
 ---
 
-<PostLayout>
+<PostLayout
+  title="All Posts | Primidi Blog - Programming & Tech Insights"
+  description="Explore all blog posts by Gharis Primada Hariyono covering software engineering, programming tutorials, technology insights, and professional development in the tech industry."
+  keywords={[
+    'Programming Blog',
+    'Software Engineering',
+    'Tech Tutorials',
+    'Web Development',
+    'Technology Insights',
+    'Programming Tips',
+    'Developer Blog',
+    'Tech Articles',
+    'Coding Tutorials',
+    'Software Development'
+  ]}
+  url="https://primidi.vercel.app/post"
+  type="website"
+>
   <div class="flex flex-col gap-y-6">
     <h1 class="text-3xl font-bold text-white">My Writings</h1>
     <div class="flex flex-col gap-y-4">
